@@ -17,8 +17,3 @@ add_subdirectory(lib/pybind11)
 pybind11_add_module(${PYTHON_MODULE_NAME} MODULE ${SRC_DIR}/pydpmatchsrvf.cpp ${SRC_DIR}/dpmatch.cpp ${SRC_DIR}/dpmatch.h)
 set (PYBIND_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/lib/pybind11/include/pybind11)
 target_include_directories(${PYTHON_MODULE_NAME} PRIVATE ${PYBIND_INCLUDE_DIR})
-
-install(TARGETS ${PYTHON_MODULE_NAME} DESTINATION .)
-
-# Quiet a warning, since this project is only valid with SKBUILD
-#set(ignoreMe "${SKBUILD}")
