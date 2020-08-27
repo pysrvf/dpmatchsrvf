@@ -9,6 +9,8 @@ Install CMAKE `pip install cmake`
 To clone the [DPmatchsrvf](https://github.com/pysrvf/DPmatchsrvf.git) repository and build the module, run the following commands.  
 ```bash
 git clone https://github.com/pysrvf/DPmatchsrvf.git
+cd DPmatchsrvf
+mkdir build
 cd build
 cmake ..
 make
