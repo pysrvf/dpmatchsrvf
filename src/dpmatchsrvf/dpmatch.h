@@ -5,15 +5,15 @@
 const float PI =  (float)3.14159265358979;
 
 class shape;
-class DPmatch {
+class dpmatch {
 
 public:
 
-    DPmatch();
+    dpmatch();
 
-    DPmatch(int dim, int siz);
+    dpmatch(int dim, int siz);
 
-    ~DPmatch();
+    ~dpmatch();
 
     bool Read_v1_v2(char *, shape **, shape **, float *, float *);
 

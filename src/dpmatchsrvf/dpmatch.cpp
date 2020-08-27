@@ -4,7 +4,7 @@
 //#include <cblas.h>
 #include <iostream>
 #include <vector>
-#include "DPmatch.h"
+#include "dpmatch.h"
 using namespace std;
 
 /*
@@ -90,34 +90,34 @@ bool Read_f1_f2(char *v_szFileName,func *v_pshape1, func *v_pshape2)
 */
 
 
-DPmatch::DPmatch()
+dpmatch::dpmatch()
 {
 //    v_pshape1 = nullptr;
 //    v_pshape1 = nullptr;
 
 }
 
-DPmatch::DPmatch(int dim, int siz)
+dpmatch::dpmatch(int dim, int siz)
 {
 //    v_pshape1 = new shape(dim,siz);
 //    v_pshape2 = new shape(dim,siz);
 }
 
 
-DPmatch::~DPmatch()
+dpmatch::~dpmatch()
 {
 //    delete v_pshape1;
 //    delete v_pshape2;
 }
 
-float * DPmatch::create_array_new2(int n, int T)
+float * dpmatch::create_array_new2(int n, int T)
 {
     float *arr = new float [n * T];
     return arr;
 }
 
 
-float ** DPmatch::create_array(int n, int T)
+float ** dpmatch::create_array(int n, int T)
 {
     float **arr = new float *[n];
     for (int i = 0; i < n; i ++)
@@ -125,7 +125,7 @@ float ** DPmatch::create_array(int n, int T)
     return arr;
 }
 
-void DPmatch::delete_array(float **arr, int n)
+void dpmatch::delete_array(float **arr, int n)
 {
     for (int i = 0; i < n; i ++)
         delete arr[i];
@@ -133,7 +133,7 @@ void DPmatch::delete_array(float **arr, int n)
     arr = nullptr;
 }
 
-void DPmatch::print_array(float *arr, int n, int T)
+void dpmatch::print_array(float *arr, int n, int T)
 {
     std::cout << "n = " << n << " T = " << T << "\n";
     cout.flush();
@@ -144,14 +144,14 @@ void DPmatch::print_array(float *arr, int n, int T)
     }
 }
 
-void DPmatch::print_vector(float *arr, int T)
+void dpmatch::print_vector(float *arr, int T)
 {
     for (int j = 0; j < T; j++)
         cout << arr[j] << " ";
     cout << "\n";
 }
 
-bool DPmatch::Read_q1_q2_deprecate(char *v_szFileName, float ***q1, float ***q2, int *n, int *T)
+bool dpmatch::Read_q1_q2_deprecate(char *v_szFileName, float ***q1, float ***q2, int *n, int *T)
 {
     FILE *vl_fpDir_Fn = NULL;
     vl_fpDir_Fn = fopen(v_szFileName,"rb");
@@ -190,7 +190,7 @@ bool DPmatch::Read_q1_q2_deprecate(char *v_szFileName, float ***q1, float ***q2,
 }
 
 
-bool DPmatch::Read_q1_q2(char *v_szFileName, float **q1, float **q2, int *n, int *T)
+bool dpmatch::Read_q1_q2(char *v_szFileName, float **q1, float **q2, int *n, int *T)
 {
     FILE *vl_fpDir_Fn = NULL;
     vl_fpDir_Fn = fopen(v_szFileName,"rb");
@@ -224,7 +224,7 @@ bool DPmatch::Read_q1_q2(char *v_szFileName, float **q1, float **q2, int *n, int
 }
 
 
-bool DPmatch::Read_q1_q2_old(char *v_szFileName, shape **s1, shape **s2)
+bool dpmatch::Read_q1_q2_old(char *v_szFileName, shape **s1, shape **s2)
 {
 	FILE *vl_fpDir_Fn = NULL;
 	vl_fpDir_Fn = fopen(v_szFileName,"rb");
@@ -265,7 +265,7 @@ bool DPmatch::Read_q1_q2_old(char *v_szFileName, shape **s1, shape **s2)
 }
 
 
-bool DPmatch::Read_X1_X2(char *v_szFileName, shape **s1, shape **s2)
+bool dpmatch::Read_X1_X2(char *v_szFileName, shape **s1, shape **s2)
 {
 	FILE *vl_fpDir_Fn = NULL;
 	vl_fpDir_Fn = fopen(v_szFileName,"rb");
@@ -307,7 +307,7 @@ bool DPmatch::Read_X1_X2(char *v_szFileName, shape **s1, shape **s2)
 
 
 
-bool DPmatch::Read_v1_v2(char *v_szFileName,shape **v_pshape1,shape **v_pshape2,float *v_fa, float *v_fb)
+bool dpmatch::Read_v1_v2(char *v_szFileName, shape **v_pshape1, shape **v_pshape2, float *v_fa, float *v_fb)
 {
 	// Open the Dir_Fn file to read the array of Direction functions
 
@@ -372,7 +372,7 @@ bool DPmatch::Read_v1_v2(char *v_szFileName,shape **v_pshape1,shape **v_pshape2,
 
 
 
-float DPmatch::Match_Coords_depracate(shape *v_pshape1, shape *v_pshape2, float *gamma, float **Energy)
+float dpmatch::Match_Coords_depracate(shape *v_pshape1, shape *v_pshape2, float *gamma, float **Energy)
 {
 //    int Nbrs[][2] = {{0 ,0},{0, 1},{ 1, 0},{ 1, 2},{ 2, 1},{ 0, 2},{ 2, 0},{ 0, 3},{ 2, 3},{ 3 ,2},{ 3 ,2},{ 0, 4},{ 1, 4}, \
     { 2, 4},{ 3, 4},{ 4, 3},{ 4, 2},{ 4, 1},{ 4, 0} };
@@ -559,7 +559,7 @@ float DPmatch::Match_Coords_depracate(shape *v_pshape1, shape *v_pshape2, float 
     return cost;
 }
 
-float DPmatch::match_deprecate(int n, int T, float **q1, float **q2, float *gamma)
+float dpmatch::match_deprecate(int n, int T, float **q1, float **q2, float *gamma)
 {
     // n is the dimension
     // T is the size (num of points along the shape)
@@ -698,7 +698,7 @@ float DPmatch::match_deprecate(int n, int T, float **q1, float **q2, float *gamm
     return cost;
 }
 
-float* DPmatch::match(int n, int T, float *q1, float *q2)
+float* dpmatch::match(int n, int T, float *q1, float *q2)
 {
     // n is the dimension
     // T is the size (num of points along the shape)
@@ -837,7 +837,7 @@ float* DPmatch::match(int n, int T, float *q1, float *q2)
     return(gamma);
 }
 
-float DPmatch::DPcost_deprecate(float **q1, float **q2, int n, int T, int k, int l, int i, int j)
+float dpmatch::DPcost_deprecate(float **q1, float **q2, int n, int T, int k, int l, int i, int j)
 {
     int x;
     float y;
@@ -875,7 +875,7 @@ float DPmatch::DPcost_deprecate(float **q1, float **q2, int n, int T, int k, int
     return E;
 }
 
-float DPmatch::DPcost(float *q1, float *q2, int n, int T, int k, int l, int i, int j)
+float dpmatch::DPcost(float *q1, float *q2, int n, int T, int k, int l, int i, int j)
 {
     int x;
     float y;
@@ -913,7 +913,7 @@ float DPmatch::DPcost(float *q1, float *q2, int n, int T, int k, int l, int i, i
     return E;
 }
 
-float DPmatch::MatchQ(shape *v_pshape1, shape *v_pshape2, float *gamma, float **Energy)
+float dpmatch::MatchQ(shape *v_pshape1, shape *v_pshape2, float *gamma, float **Energy)
 {
 //    int Nbrs[][2] = {{0 ,0},{0, 1},{ 1, 0},{ 1, 2},{ 2, 1},{ 0, 2},{ 2, 0},{ 0, 3},{ 2, 3},{ 3 ,2},{ 3 ,2},{ 0, 4},{ 1, 4}, \
     { 2, 4},{ 3, 4},{ 4, 3},{ 4, 2},{ 4, 1},{ 4, 0} };
@@ -1236,7 +1236,7 @@ float MatchPaths(shape *v_pshape1, shape *v_pshape2,float a, float b , float *ga
 
  */
 
-float DPmatch::Match_Cost_Coords_depracate(shape *v_ps1, shape *v_ps2,int k,int l,int i,int j)
+float dpmatch::Match_Cost_Coords_depracate(shape *v_ps1, shape *v_ps2, int k, int l, int i, int j)
 {
     int x;
     float y;
@@ -1275,7 +1275,7 @@ float DPmatch::Match_Cost_Coords_depracate(shape *v_ps1, shape *v_ps2,int k,int 
 
 }
 
-float DPmatch::Match_CostQ(shape *v_ps1, shape *v_ps2,int k,int l,int i,int j)
+float dpmatch::Match_CostQ(shape *v_ps1, shape *v_ps2, int k, int l, int i, int j)
 {
 	int x;
 	float y;
@@ -1316,7 +1316,7 @@ float DPmatch::Match_CostQ(shape *v_ps1, shape *v_ps2,int k,int l,int i,int j)
 
 
 
-float DPmatch::L2_Costfn(float *v_Phi1, float *v_Theta1, float *v_Phi2, float *v_Theta2,int T,float v_a ,float v_b)
+float dpmatch::L2_Costfn(float *v_Phi1, float *v_Theta1, float *v_Phi2, float *v_Theta2, int T, float v_a , float v_b)
 {
 	int i = 0;
 	float tmp_phi = 0;
@@ -1331,7 +1331,7 @@ float DPmatch::L2_Costfn(float *v_Phi1, float *v_Theta1, float *v_Phi2, float *v
 }
 
 
-float DPmatch::norm(float *v_pfArray,int v_ilen)
+float dpmatch::norm(float *v_pfArray, int v_ilen)
 {
 	float normval = 0;
 	for(int i = 0; i < v_ilen; i ++)
@@ -1343,7 +1343,7 @@ float DPmatch::norm(float *v_pfArray,int v_ilen)
 	return normval;
 }
 
-bool DPmatch::writegamma(FILE *vl_fpDirFn, float *gamma, int T)
+bool dpmatch::writegamma(FILE *vl_fpDirFn, float *gamma, int T)
 {
     size_t bytes_written;
     if( vl_fpDirFn == NULL)
@@ -1359,7 +1359,7 @@ bool DPmatch::writegamma(FILE *vl_fpDirFn, float *gamma, int T)
         return false;
 }
 
-bool DPmatch::WriteGamma_deprecate(FILE *vl_fpDirFn ,float *gamma,int shift, shape *s2)
+bool dpmatch::WriteGamma_deprecate(FILE *vl_fpDirFn , float *gamma, int shift, shape *s2)
 {
 	size_t bytes_written;
 	int N = s2->m_iT;
@@ -1380,7 +1380,7 @@ bool DPmatch::WriteGamma_deprecate(FILE *vl_fpDirFn ,float *gamma,int shift, sha
 		return false;
 }
 
-bool DPmatch::WriteGammaV(FILE *vl_fpDirFn ,float *gamma,int shift, shape *s2)
+bool dpmatch::WriteGammaV(FILE *vl_fpDirFn , float *gamma, int shift, shape *s2)
 {
 	size_t bytes_written;
 	int N = s2->m_iT;
@@ -1401,7 +1401,7 @@ bool DPmatch::WriteGammaV(FILE *vl_fpDirFn ,float *gamma,int shift, shape *s2)
 		return false;
 }
 
-void DPmatch::linint(float *xnew, float *ynew, int cnt, float *xx, float *yy, int n)
+void dpmatch::linint(float *xnew, float *ynew, int cnt, float *xx, float *yy, int n)
 {
 	int i = 0;
 	int idx = 0;
@@ -1440,7 +1440,7 @@ void DPmatch::linint(float *xnew, float *ynew, int cnt, float *xx, float *yy, in
 		}
 }
 
-void DPmatch::spline(float *x, float *y, int n, float yp1, float ypn, float *y2)
+void dpmatch::spline(float *x, float *y, int n, float yp1, float ypn, float *y2)
 {
 	int i,k;
 	float p,qn,sig,un,*u;
@@ -1481,7 +1481,7 @@ void DPmatch::spline(float *x, float *y, int n, float yp1, float ypn, float *y2)
 	free(u);
 }
 
-void DPmatch::splint(float *xa, float *ya, float *y2a, int n, float x, float *y)
+void dpmatch::splint(float *xa, float *ya, float *y2a, int n, float x, float *y)
 {
 	int klo,khi,k;
 	float h,b,a;
@@ -1506,7 +1506,7 @@ void DPmatch::splint(float *xa, float *ya, float *y2a, int n, float x, float *y)
 }
 
 
-void DPmatch::copy(int T, float *src, float *dest)
+void dpmatch::copy(int T, float *src, float *dest)
 {
 	for(int i = 0; i < T; i++)
 	{
@@ -1515,9 +1515,9 @@ void DPmatch::copy(int T, float *src, float *dest)
 	
 }
 
-void DPmatch::print_int(int T)
+void dpmatch::print_int(int T)
 {
-    std::cout << "This is DPmatch " << T <<".\n";
+    std::cout << "This is dpmatch " << T <<".\n";
 }
 
 

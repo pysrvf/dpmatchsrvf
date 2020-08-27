@@ -1,12 +1,12 @@
-#include "DPmatch.h"
+#include "dpmatch.h"
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 #include <pybind11/numpy.h>
 
 namespace py = pybind11;
 
-// pybind11 wrapper for DPmatch.match() function
-py::array_t<float> match(DPmatch& self,
+// pybind11 wrapper for dpmatch.match() function
+py::array_t<float> match(dpmatch& self,
                          const py::array_t<float, py::array::c_style | py::array::forcecast>& q1,
                          const py::array_t<float, py::array::c_style | py::array::forcecast>& q2){
     py::buffer_info q1buff = q1.request();
@@ -23,18 +23,18 @@ py::array_t<float> match(DPmatch& self,
     return py::cast(gamma_vect);
 }
 
-PYBIND11_MODULE(pyDPmatchsrvf, m)
+PYBIND11_MODULE(dpmatchsrvf, m)
 {
-    m.doc() = "pybind11 pyDPmatchsrvf plugin";
-    // bindings to DPmatch class
-    py::class_<DPmatch>(m, "DPmatch")
+    m.doc() = "pybind11 dpmatchsrvf plugin";
+    // bindings to dpmatch class
+    py::class_<dpmatch>(m, "dpmatch")
             .def(py::init())
-            .def("print_int", &DPmatch::print_int)
-            .def("copy", &DPmatch::copy)
-            .def("print_vector", [](DPmatch& self, std::vector<float> vect){
+            .def("print_int", &dpmatch::print_int)
+            .def("copy", &dpmatch::copy)
+            .def("print_vector", [](dpmatch& self, std::vector<float> vect){
                 self.print_vector(vect.data(), vect.size());
             })
-            .def("print_array", [](DPmatch& self, const py::array_t<float, py::array::c_style>& array){
+            .def("print_array", [](dpmatch& self, const py::array_t<float, py::array::c_style>& array){
                 py::buffer_info array_buff = array.request();
                 float *ptr = static_cast<float *>(array_buff.ptr);
                 self.print_array(ptr, (int) array.shape(0), (int) array.shape(1));

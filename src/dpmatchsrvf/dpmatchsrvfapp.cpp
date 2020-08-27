@@ -1,5 +1,5 @@
 #include <iostream>
-#include "DPmatch.h"
+#include "dpmatch.h"
 using namespace std;
 
 int main(int argc, char *argv[])
@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     float *q2 = nullptr;
 
 
-    DPmatch dpmatchobj;
+    dpmatch dpmatchobj;
     FILE *vl_fpgamma = NULL;
     int vl_ishift = 0;
     if(argc != 3)
