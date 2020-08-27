@@ -8,7 +8,7 @@ include_directories("${SRC_DIR}")
 add_executable(dpmatchsrvfapp
 	${SRC_DIR}/dpmatchsrvfapp.cpp
 	${SRC_DIR}/dpmatch.cpp
-	${SRC_DIR}/dPmatch.h)
+	${SRC_DIR}/dpmatch.h)
 
 add_library(ldpmatchsrvf ${SRC_DIR}/dpmatch.cpp ${SRC_DIR}/dpmatch.h)
 
