@@ -1,0 +1,11 @@
+.idea/
+.DS_Store
+cmake-build-debug/
+cmake-build-release/
+build/
+dist/
+_build/
+_generate/
+*.so
+*.py[cod]
+*.egg-info
