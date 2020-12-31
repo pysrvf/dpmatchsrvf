@@ -718,7 +718,7 @@ float* dpmatch::match(int n, int T, float *q1, float *q2)
             { 10,  3 }, { 10,  7 }, { 10,  9 }
     };
     const int NBR_SIZ = 63;
-    std::cout << "NBR_SIZ = " << NBR_SIZ << " ";
+//    std::cout << "NBR_SIZ = " << NBR_SIZ << " ";
 
     int NumPlot = 15;
     float shfx = 0.2;
