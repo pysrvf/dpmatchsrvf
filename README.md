@@ -38,6 +38,11 @@ gam
 ```
 
 ### Build and test the C++ library development version (optional)
+Install `naonobind` as a submodule first.
+```
+git submodule add https://github.com/wjakob/nanobind ext/nanobind
+git submodule update --init --recursive
+```
 To clone the [dpmatchsrvf](https://github.com/pysrvf/dpmatchsrvf.git) repository and build the module, run the following commands.  
 ```bash
 git clone https://github.com/pysrvf/dpmatchsrvf.git
