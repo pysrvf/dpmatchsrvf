@@ -4,6 +4,9 @@
 
 const float PI =  (float)3.14159265358979;
 
+int testnano(int a, int b);
+
+
 class shape;
 class dpmatch {
 

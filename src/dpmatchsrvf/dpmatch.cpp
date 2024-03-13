@@ -7,6 +7,9 @@
 #include "dpmatch.h"
 using namespace std;
 
+
+int testnano(int a, int b) { return a + b; }
+
 /*
 float InnerProduct(float *h1, float *f1, float *h2, float *f2, params *v_pparams, float *v_pfPhi)
 {
@@ -1515,7 +1518,7 @@ void dpmatch::copy(int T, float *src, float *dest)
 	
 }
 
-void dpmatch::print_int(int T)
+void dpmatch::print_int(int T = 999)
 {
     std::cout << "This is dpmatch " << T <<".\n";
 }

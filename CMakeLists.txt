@@ -1,24 +1,31 @@
-cmake_minimum_required(VERSION 3.17)
+cmake_minimum_required(VERSION 3.15...3.27)
 set(CMAKE_CXX_FLAGS_RELEASE "-Wall -Wextra")
 set(CMAKE_CXX_FLAGS_DEBUG "-g")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 project(dpmatchsrvf)
-set(CMAKE_CXX_STANDARD 14)
-set (SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src/${CMAKE_PROJECT_NAME})
-include(GNUInstallDirs)
+find_package(Python 3.8 COMPONENTS Interpreter Development.Module REQUIRED)
+
+if (NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+  set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build." FORCE)
+  set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release" "MinSizeRel" "RelWithDebInfo")
+endif()
+
+
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/ext/nanobind)
+
+set(PYTHON_MODULE_NAME dpmatchsrvf)
+set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src/dpmatchsrvf)
+
+nanobind_add_module(${PYTHON_MODULE_NAME} ${SRC_DIR}/pydpmatchsrvf.cpp ${SRC_DIR}/dpmatch.cpp ${SRC_DIR}/dpmatch.h)
+
 include_directories("${SRC_DIR}")
+include_directories("${SRC_DIR}/ext/nanobind/include/")
 
 add_executable(dpmatchsrvfapp
 	${SRC_DIR}/dpmatchsrvfapp.cpp
 	${SRC_DIR}/dpmatch.cpp
 	${SRC_DIR}/dpmatch.h)
 
-add_library(ldpmatchsrvf ${SRC_DIR}/dpmatch.cpp ${SRC_DIR}/dpmatch.h)
-
-set(PYTHON_MODULE_NAME dpmatchsrvf)
-add_subdirectory(lib/pybind11)
-pybind11_add_module(${PYTHON_MODULE_NAME} MODULE ${SRC_DIR}/pydpmatchsrvf.cpp ${SRC_DIR}/dpmatch.cpp ${SRC_DIR}/dpmatch.h)
-set (PYBIND_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/lib/pybind11/include/pybind11)
-target_include_directories(${PYTHON_MODULE_NAME} PRIVATE ${PYBIND_INCLUDE_DIR})
+#add_library(ldpmatchsrvf ${SRC_DIR}/dpmatch.cpp ${SRC_DIR}/dpmatch.h)
