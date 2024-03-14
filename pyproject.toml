@@ -12,9 +12,6 @@ requires-python = ">=3.8"
 authors = [
     { name = "Shantanu H. Joshi", email = "shjoshi@ieee.org" },
 ]
-dependencies = [
-    'nanobind @ https://github.com/wjakob/nanobind.git',
-]
 
 [project.urls]
 Homepage = "https://github.com/pysrvf/dpmatchsrvf"
