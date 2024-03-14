@@ -2,5 +2,6 @@
     "files.associations": {
         "vector": "cpp",
         "valarray": "cpp"
-    }
+    },
+    "cmake.configureOnOpen": true
 }

@@ -22,7 +22,6 @@ int main(int argc, char *argv[])
     float *q1 = nullptr;
     float *q2 = nullptr;
 
-
     dpmatch dpmatchobj;
     FILE *vl_fpgamma = NULL;
     int vl_ishift = 0;
@@ -35,6 +34,9 @@ int main(int argc, char *argv[])
 
     if (dpmatchobj.Read_q1_q2(argv[1], &q1, &q2, &n, &T))
     {
+        // dpmatchobj.print_array(q1, n, T);
+        // dpmatchobj.print_array(q2, n, T);
+
         start = clock();
         gamma_hat = dpmatchobj.match(n, T, q1, q2);
         finish = clock();
@@ -42,9 +44,10 @@ int main(int argc, char *argv[])
         vl_fpgamma = fopen(argv[2],"wb");
         dpmatchobj.writegamma(vl_fpgamma,gamma_hat,T);
         fclose(vl_fpgamma);
+        // dpmatchobj.print_vector(gamma_hat, T);
         delete q1;
         delete q2;
-
+        delete gamma_hat;
     }
 
     return 0;

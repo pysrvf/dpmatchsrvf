@@ -701,7 +701,7 @@ float dpmatch::match_deprecate(int n, int T, float **q1, float **q2, float *gamm
     return cost;
 }
 
-float* dpmatch::match(int n, int T, float *q1, float *q2)
+float* dpmatch::match(int n, int T, const float *q1, const float *q2)
 {
     // n is the dimension
     // T is the size (num of points along the shape)
@@ -889,7 +889,7 @@ float dpmatch::DPcost_deprecate(float **q1, float **q2, int n, int T, int k, int
     return E;
 }
 
-float dpmatch::DPcost(float *q1, float *q2, int n, int T, int k, int l, int i, int j)
+float dpmatch::DPcost(const float *q1, const float *q2, int n, int T, int k, int l, int i, int j)
 {
     int x;
     float y;
