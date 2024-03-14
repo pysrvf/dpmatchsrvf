@@ -6,7 +6,7 @@ Install CMAKE
 ### Install as a package
 
 ```bash
-git clone https://github.com/pysrvf/dpmatchsrvf.git
+git clone --recursive https://github.com/pysrvf/dpmatchsrvf.git
 cd dpmatchsrvf
 pip install . 
 ```
@@ -35,6 +35,11 @@ q2 = np.array([[ 0.00552389,  0.15402398,  0.35514829,  0.40165261,  0.40273699,
 
 gam=dpmatch().match(q1, q2)
 gam
+```
+
+It should display something like
+```
+[0.0, 0.18333333730697632, 0.36666667461395264, 0.550000011920929, 0.7142857313156128, 0.7928571701049805, 0.8714285492897034, 0.9083333015441895, 0.9214285612106323, 0.9345238208770752, 0.9476190209388733, 0.9607142806053162, 0.973809540271759, 0.9869047403335571, 1.0]
 ```
 
 ### Build and test the C++ library development version (optional)
