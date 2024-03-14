@@ -15,7 +15,7 @@ pip install .
 
 In the `python` terminal copy and paste the following code  
 ```python
-from dpmatchsrvf import dpmatch
+import dpmatchsrvf
 import numpy as np
 
 q1 = np.array([[ 0.00169204,  0.17140255,  0.37388457,  0.40324848,  0.40343557,
@@ -33,7 +33,7 @@ q2 = np.array([[ 0.00552389,  0.15402398,  0.35514829,  0.40165261,  0.40273699,
                 -0.00937906, -0.11410367, -0.29597692, -0.37419586, -0.38819515]])
 
 
-gam=dpmatch().match(q1, q2)
+gam=dpmatchsrvf.match(q1, q2)
 gam
 ```
 
