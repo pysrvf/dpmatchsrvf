@@ -7,10 +7,6 @@ using namespace std;
 namespace nb = nanobind;
 using nparray = nb::ndarray<nb::numpy, float, nb::ndim<2>>;
 
-
-float data[] = { 1, 2, 3, 4, 5, 6, 7, 8 };
-
-
 auto match(const nparray &q1, const nparray &q2)
 {
 
@@ -32,5 +28,3 @@ NB_MODULE(dpmatchsrvf, m)
     m.doc() = "nanobind dpmatchsrvf plugin";
     m.def("match", &match, nb::rv_policy::take_ownership);
 }
-
-
